@@ -3,6 +3,8 @@
 ## Requirements
 
 - reading request information from '.\data-sample\datasets-source-sample.xml';
+  - parse the XML file
+  - extract titles
 - sending requests to the PubMed (http://www.ncbi.nlm.nih.gov/sites/entrez/) through the user [API](https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.ESearch) provided by the server;
 - getting the returned XML files from the remote server, and then extracting information;
 -  extract the PMIDs from the response and then write these PMIDs into a XML file named "groupID_result";
