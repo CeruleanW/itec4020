@@ -3,10 +3,10 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Queue;
 
 public class SAXContentHandler extends DefaultHandler {
-    private final List<String> articleTitles = new LinkedList<String>();
+    private final Queue<String> articleTitles = new LinkedList<>();
     private boolean hasTitle = false;
     private String articleTitle = null;
 
@@ -36,7 +36,8 @@ public class SAXContentHandler extends DefaultHandler {
         }
     }
 
-    public List<String> getArticleTitles() {
+    //return a queue of all ArticleTitles
+    public Queue<String> getArticleTitles() {
         return this.articleTitles;
     }
 }
