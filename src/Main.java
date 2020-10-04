@@ -22,7 +22,6 @@ public class Main {
 
         //System.out.println(titles);
         //try {
-        //    myRequestHandler.createSingleRequest("John Snow and modern-day environmental epidemiology.", "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi");
         //} catch (IOException e) {
         //    e.printStackTrace();
         //}
@@ -30,9 +29,12 @@ public class Main {
         //create corresponding requests
         String baseUrl = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi";
         String currentTitle = (titles != null) ? titles.poll() : null;
+        HttpURLConnection myConnection;
         while (currentTitle != null) {
             try {
-                HttpURLConnection myConnection = myRequestHandler.createSingleRequest(currentTitle, baseUrl);
+                //myConnection = myRequestHandler.createSingleRequest("John Snow and modern-day environmental epidemiology.", baseUrl);
+                //    myRequestHandler.createSingleRequest("John Snow and modern-day environmental epidemiology.", "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi");
+                myConnection = myRequestHandler.createSingleRequest(currentTitle, baseUrl);
                 //send the request
                 myRequestHandler.sendRequest(myConnection);
 

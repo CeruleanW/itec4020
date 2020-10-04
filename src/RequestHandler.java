@@ -37,7 +37,7 @@ public class RequestHandler {
         HttpURLConnection connection;
 
         String encodeQuery = URLEncoder.encode(query, StandardCharsets.UTF_8.name());
-        String requestUrl = baseUrl + "?db=pubmed&term=" + encodeQuery;
+        String requestUrl = baseUrl + "?db=pubmed&term=" + encodeQuery + "&field=title";
         URL url = new URL(requestUrl);
         connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
