@@ -1,48 +1,29 @@
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.util.Queue;
 
 public class Main {
-    public static void main(String[] args) throws ParserConfigurationException, SAXException {
-        //set the target xml file
-        String filePath = "src/data-sample/datasets-source-sample.xml";
-        //parse the file
-        RequestHandler myRequestHandler = new RequestHandler();
-        Queue<String> titles = null;
-        try {
-            titles = myRequestHandler.getTitles(filePath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws IOException, XMLStreamException {
+        //HttpURLConnection myConnection;
+        ////set the target xml file
+        //String filePath = "src/data-sample/datasets-source-sample.xml";
+        ////parse the file
+        //RequestHandler myRequestHandler = new RequestHandler();
+        //myConnection = myRequestHandler.readRequest();
 
         //Testing
 
-        //System.out.println(titles);
-        //try {
-        //} catch (IOException e) {
-        //    e.printStackTrace();
-        //}
-
         //create corresponding requests
         String baseUrl = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi";
-        String currentTitle = (titles != null) ? titles.poll() : null;
-        HttpURLConnection myConnection;
-        while (currentTitle != null) {
-            try {
-                //myConnection = myRequestHandler.createSingleRequest("John Snow and modern-day environmental epidemiology.", baseUrl);
-                //    myRequestHandler.createSingleRequest("John Snow and modern-day environmental epidemiology.", "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi");
-                myConnection = myRequestHandler.createSingleRequest(currentTitle, baseUrl);
-                //send the request
-                myRequestHandler.sendRequest(myConnection);
+        String filePath = "src/data-sample/datasets-source-sample.xml";
+        RequestHandler myRequestHandler1 = new RequestHandler();
+        RequestHandler myRequestHandler2 = new RequestHandler("src/data-sample/test.xml");
 
-                currentTitle = titles.poll();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        System.out.println(myRequestHandler2.readRequest());
+        System.out.println(myRequestHandler2.readRequest());
+        System.out.println(myRequestHandler2.readRequest());
+        System.out.println(myRequestHandler2.readRequest());
+        System.out.println(myRequestHandler2.readRequest());
+
         //get response
     }
 }
